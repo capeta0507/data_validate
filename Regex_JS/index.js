@@ -116,7 +116,7 @@ function submitHandle(e){
   if (reg_password.test(my_password)){
     my_password_message.html("");
   }else{
-    my_password_message.html("密碼無效，至少8位英數");
+    my_password_message.html("密碼無效，至少8位英數字");
     error_Count ++;
   }
 
@@ -124,7 +124,7 @@ function submitHandle(e){
   if (reg_password.test(my_confirm_password)){
     my_confirm_password_message.html("");
   }else{
-    my_confirm_password_message.html("密碼無效，至少8位英數");
+    my_confirm_password_message.html("密碼無效，至少8位英數字");
     error_Count ++;
   }
 
@@ -158,7 +158,7 @@ function submitHandle(e){
   if (my_country === "KS") {
     my_country_message.html("");
   }else{
-    my_country_message.html("本檔活定在高雄舉行");
+    my_country_message.html("本檔活動在高雄舉行");
     error_Count ++;
   }
 

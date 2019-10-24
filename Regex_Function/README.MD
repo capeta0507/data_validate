@@ -10,7 +10,7 @@
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>A Pen by  TzuHui</title>
+  <title>Form Validate</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
@@ -22,22 +22,25 @@
   <h1>validate.js 範例</h1>
   <form id="mainForm">
     <div class="form-row">
-      <div class="form-group col-md-6">
+      <div class="form-group col-12">
         <label for="email">Email</label>
         <input id="email" class="form-control" type="text" placeholder="Email" name="email">
         <div id="email_message" class="messages"></div>
       </div>
+    </div>
+    <div class="form-row">
       <div class="form-group col-md-6">
-        <label for="password">密碼</label>
-          <input id="password" class="form-control" type="password" placeholder="Password" name="password">
-        <div id="password_message" class="messages"></div>
+          <label for="password">密碼</label>
+            <input id="password" class="form-control" type="password" placeholder="Password" name="password">
+          <div id="password_message" class="messages"></div>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="confirm_password">確認密碼</label>
+        <input id="confirm_password" class="form-control" type="password" placeholder="Confirm password" name="confirm_password">
+        <div id="confirm_password_message" class="messages"></div>
       </div>
     </div>
-    <div class="form-group">
-      <label for="confirm_password">確認密碼</label>
-      <input id="confirm_password" class="form-control" type="password" placeholder="Confirm password" name="confirm_password">
-      <div id="confirm_password_message" class="messages"></div>
-    </div>
+    
     <div class="form-row">
       <div class="form-group col-md-6">
         <label for="username">使用者名稱</label>
@@ -71,7 +74,8 @@
   </form>
 </div>
 <!-- partial -->
-<script  src="./validate.js"></script>
+<script  src="./validate_function.js"></script>
+<script src="./index.js"></script>
 </body>
 </html>
 ```
@@ -145,16 +149,16 @@ function submitHandle(e){
   // TODO: 1. 所有資料必填 str.length
 
   // Email
-  console.log('email len : ',my_email.length);
-  if (my_email.length <=0){
+  // console.log('email len : ',my_email.length);
+  if (x_isEmpty(my_email)){
     my_email_message.html("Email 是必填的欄位");
     error_Count ++;
   } else {
     my_email_message.html("");
   }
 
-  // // password
-  if (my_password.length <=0){
+  // password
+  if (x_isEmpty(my_password)){
     my_password_message.html("密碼 是必填的欄位");
     error_Count ++;
   } else {
@@ -162,7 +166,7 @@ function submitHandle(e){
   }
 
   // confirm_password
-  if (my_confirm_password.length <=0){
+  if (x_isEmpty(my_confirm_password)){
     my_confirm_password_message.html("確認密碼 是必填的欄位");
     error_Count ++;
   } else {
@@ -170,7 +174,7 @@ function submitHandle(e){
   }
 
   // username
-  if (my_username.length <=0){
+  if (x_isEmpty(my_username)){
     my_username_message.html("使用者名稱 是必填的欄位");
     error_Count ++;
   } else {
@@ -178,7 +182,7 @@ function submitHandle(e){
   }
 
   // birthdate
-  if (my_birthdate.length <=0){
+  if (x_isEmpty(my_birthdate)){
     my_birthdate_message.html("生日 是必填的欄位");
     error_Count ++;
   } else {
@@ -194,7 +198,7 @@ function submitHandle(e){
   }
 
   // mobile
-  if (my_mobile.length <=0){
+  if (x_isEmpty(my_mobile)){
     my_mobile_message.html("手機 是必填的欄位");
     error_Count ++;
   } else {
@@ -210,32 +214,38 @@ function submitHandle(e){
   // TODO: 2. Regex 驗證
 
   // Email
-  let reg_Email = /^\w+((-\w+)|(.\w+))@[A-Za-z0-9]+((.|-)[A-Za-z0-9]+).[A-Za-z]+$/;
-  if (reg_Email.test(my_email)){
+  if (x_isEmail(my_email)){
     my_email_message.html("");
   }else{
     my_email_message.html("Email 無效");
     error_Count ++;
   }
 
-  // password
-  let reg_password = /[a-zA-Z0-9]{8,}/;
-  if (reg_password.test(my_password)){
+  // // password
+  // if (x_isPassword(my_password)){
+  //   my_password_message.html("");
+  // }else{
+  //   my_password_message.html("密碼無效，至少8位英數字");
+  //   error_Count ++;
+  // }
+  // password 強度
+  // 密碼的強度必須是包含大小寫字母和數位的組合，不能使用特殊字元，長度在8-10之間。
+  if (x_isPassword_strong(my_password)){
     my_password_message.html("");
   }else{
-    my_password_message.html("密碼無效，至少8位英數");
+    my_password_message.html("密碼必須包含大小寫字母和數位的組合，使用特殊字元(!@#$%^&*?)，長度在8~20之間");
     error_Count ++;
   }
 
-  // confirm_password
-  if (reg_password.test(my_confirm_password)){
+  // // confirm_password
+  if (x_isPassword(my_confirm_password)){
     my_confirm_password_message.html("");
   }else{
-    my_confirm_password_message.html("密碼無效，至少8位英數");
+    my_confirm_password_message.html("密碼無效，至少8位英數字");
     error_Count ++;
   }
 
-  // 密碼雙重確認
+  // // 密碼雙重確認
   if (my_password === my_confirm_password ){
     my_confirm_password_message.html("");
   }else{
@@ -246,8 +256,7 @@ function submitHandle(e){
   // username (有填就好)
 
   // mobile
-  let reg_mobile = /^09\d{8}$/;
-  if (reg_mobile.test(my_mobile)){
+  if (isMobile(my_mobile)){
     my_mobile_message.html("");
   }else{
     my_mobile_message.html("手機無效，必須符合台灣規格");
@@ -265,7 +274,7 @@ function submitHandle(e){
   if (my_country === "KS") {
     my_country_message.html("");
   }else{
-    my_country_message.html("本檔活定在高雄舉行");
+    my_country_message.html("本檔活動在高雄舉行");
     error_Count ++;
   }
 
@@ -275,9 +284,74 @@ function submitHandle(e){
     return false;
   }else{
     // 資料填寫完卻正確
+    let my_Data = {
+      email:my_email,
+      password:my_password,
+      username:my_username,
+      birthdate:my_birthdate,
+      country:my_country,
+      mobile:my_mobile
+    }
+    console.table(my_Data)
     alert("填寫完成...謝謝");
     // 進行後續處理
   }
-
 }
+```
+
+### validate_function.js
+撰寫資料檢驗函式
+```javascript=
+// 撰寫資料檢驗的函式
+
+// 資料空白
+function x_isEmpty(dataStr){
+  if(dataStr.trim().length == 0){
+    return true;
+  }else{
+    return false;
+  }
+}
+// 檢查 eMail
+function x_isEmail(dataStr){
+  let reg_Email = /^\w+((-\w+)|(.\w+))@[A-Za-z0-9]+((.|-)[A-Za-z0-9]+).[A-Za-z]+$/;
+  if (reg_Email.test(dataStr)){
+    return true;
+  }else{
+    return false;
+  }
+}
+// >=8位數字，簡易密碼
+function x_isPassword(dataStr){
+  let reg_password = /[a-zA-Z0-9]{8,}/;
+  if (reg_password.test(dataStr)){
+    return true;
+  }else{
+    return false;
+  }
+}
+// 強型態密碼檢查 (8~20)
+function x_isPassword_strong(dataStr){
+  // 密碼的強度必須是包含大小寫字母和數位的組合，不能使用特殊字元，長度在8~20之間。
+  // let reg_password = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}$/;
+
+  // 密碼的強度必須是包含大小寫字母和數位的組合，使用特殊字元(!@#$%^&*?)，長度在8~20之間。
+  let reg_password = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*?]).{8,20}$/;
+
+  if (reg_password.test(dataStr)){
+    return true;
+  }else{
+    return false;
+  }
+}
+// Mobile
+function isMobile(dataStr){
+  let reg_mobile = /^09\d{8}$/;
+  if (reg_mobile.test(dataStr)){
+    return true;
+  }else{
+    return false;
+  }
+}
+
 ```
