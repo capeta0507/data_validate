@@ -168,6 +168,15 @@ function submitHandle(e){
     return false;
   }else{
     // 資料填寫完卻正確
+    let my_Data = {
+      email:my_email,
+      password:my_password,
+      username:my_username,
+      birthdate:my_birthdate,
+      country:my_country,
+      mobile:my_mobile
+    }
+    console.table(my_Data)
     alert("填寫完成...謝謝");
     // 進行後續處理
   }
