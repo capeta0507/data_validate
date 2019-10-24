@@ -17,3 +17,5 @@
 3. 選項 (Option)
 
 資料驗證的方法非常多。
+[Regex寫在Form裡](https://github.com/capeta0507/data_validate/tree/master/Regex_Form)
+[Regex寫在Javascript裡](https://github.com/capeta0507/data_validate/tree/master/Regex_JS)
