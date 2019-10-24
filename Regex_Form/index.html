@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>資料驗證</title>
+    <style>
+      #myID, #myPhone {
+        color:blue;
+        font-size: 25px;
+      }
+      /* 輸入驗證錯誤時的表現 */
+      #myID:invalid{
+        color:red;
+        border-color: red;
+      }
+      #mySend {
+        font-size: 25px;
+      }
+      /* 輸入驗證錯誤時的表現 */
+      #myPhone:invalid{
+        color:red;
+        border-color: red;
+      }
+      /* 輸入正確時的表現 */
+      #myPhone:valid{
+        color:black;
+        border-color: blue;
+      }
+
+    </style>
+  </head>
+  <body>
+    <form>
+      <h1>表單資料驗證</h1>
+      身分證字號：<input type="text" id="myID" autocomplete="off" pattern='^[A-Z][12]\d{8}$' title="(不符合台灣身分證字號規則)" required>
+
+      手機：<input type="text" id="myPhone" autocomplete="off" pattern='^09\d{8}$' title="(不符合台灣Mobile規則)" required>
+      <input type="submit" id="mySend" value="送出">
+    </form>
+  </body>
+</html>
