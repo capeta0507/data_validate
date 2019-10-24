@@ -1,4 +1,4 @@
-# Form input 資料驗證(form/regex)
+# Form input 資料驗證
 ###### tags: `form` `資料驗證`
 
 前端的工作除了製作介面、呼叫API等工作之外，在這中間還有一項重要工作就是【資料驗證 Validation】，也就是說介面的輸入資料，在傳送給API之前，需要確保資料是有效、乾淨的，而非垃圾資訊，避免GIGO (Garbage in, garbage out)。
