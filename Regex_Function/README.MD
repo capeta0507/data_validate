@@ -1,7 +1,7 @@
-# Form input 資料驗證(js/regex)
-###### tags: `form` `js/regex`
+# Form input 資料驗證(js/function)
+###### tags: `form` `js/function`
 
-資料驗證也可以寫在表單 submit 之後的程式處理中，本案例將採用 javascript Regex 驗證資料的方法。
+Validate_function.js 是一個方便用於表單驗證的 JavaScript 函式庫，透過 Validate_function.js 的引用你可以更簡單且完整的處理表單驗證的問題。
 
 ### index.html
 採用傳統表單 + Bootstrap + jQuery
