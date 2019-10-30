@@ -19,7 +19,7 @@ function x_isEmail(dataStr){
 }
 // >=8位數字，簡易密碼
 function x_isPassword(dataStr){
-  let reg_password = /[a-zA-Z0-9]{8,}/;
+  let reg_password = /[a-zaA-Z0-9]{8,}/;
   if (reg_password.test(dataStr)){
     return true;
   }else{
@@ -40,7 +40,7 @@ function x_isPassword_strong(dataStr){
     return false;
   }
 }
-// Mobile
+// 是不是手機(必須以09 為開頭)
 function isMobile(dataStr){
   let reg_mobile = /^09\d{8}$/;
   if (reg_mobile.test(dataStr)){
@@ -48,4 +48,33 @@ function isMobile(dataStr){
   }else{
     return false;
   }
+}
+
+// 判斷是不是日期 yyyy-mm-dd 有效格式 & 有效年、月、日
+function isDate(dataStr) {
+  var bits = dataStr.split('-');
+  var y = bits[0],
+      m = bits[1],
+      d = bits[2];
+  // Assume not leap year by default (note zero index for Jan)
+  var daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+
+  // If evenly divisible by 4 and not evenly divisible by 100,
+  // or is evenly divisible by 400, then a leap year
+  if ((!(y % 4) && y % 100) || !(y % 400)) {
+      daysInMonth[1] = 29;
+  }
+  return !(/\D/.test(String(d))) && d > 0 && d <= daysInMonth[--m]
+}
+
+// 是不是純數字(整數)(Integer)
+function isIntegerNumber(dataStr) {
+  var reg = /^[0-9]*$/;
+  return reg.test(dataStr);
+}
+
+// 是不是純數字(浮點數)(Floating point number)
+function isFloatNumber_dot(dataStr) {
+  var reg = /^[0-9]+(\.[0-9]{1,10})?$/;   //允許小數點
+  return reg.test(dataStr);
 }
