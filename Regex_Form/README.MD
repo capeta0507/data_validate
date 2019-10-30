@@ -12,6 +12,7 @@ Regex : Regular Expression，這是定義資料格式檢查的正規表示法。
 [參考說明](https://larry850806.github.io/2016/06/23/regex/)
 [Youtube教學](https://www.youtube.com/watch?v=rPNGB0ZLvdw)
 [指令整理](https://docs.google.com/document/d/1bUq0Jb1mLM7zmcVjDyLIX6UTLWGbKp-d99-w4rMrjvg/edit)
+[w3school form](https://www.w3schools.com/html/html_forms.asp)
 
 在javascript中的指令如下：(要檢測 myStr 變數是否符合 'yyyy-mm-dd'日期輸入格式)
 1. 定義1：var reg = new RegExp('[0-9]{4}-[0-9]{2}-[0-9]{2}');
