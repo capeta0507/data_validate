@@ -41,7 +41,7 @@ function x_isPassword_strong(dataStr){
   }
 }
 // 是不是手機(必須以09 為開頭)
-function isMobile(dataStr){
+function x_isMobile(dataStr){
   let reg_mobile = /^09\d{8}$/;
   if (reg_mobile.test(dataStr)){
     return true;
@@ -51,7 +51,7 @@ function isMobile(dataStr){
 }
 
 // 判斷是不是日期 yyyy-mm-dd 有效格式 & 有效年、月、日
-function isDate(dataStr) {
+function x_isDate(dataStr) {
   var bits = dataStr.split('-');
   var y = bits[0],
       m = bits[1],
@@ -68,13 +68,13 @@ function isDate(dataStr) {
 }
 
 // 是不是純數字(整數)(Integer)
-function isIntegerNumber(dataStr) {
+function x_isIntegerNumber(dataStr) {
   var reg = /^[0-9]*$/;
   return reg.test(dataStr);
 }
 
 // 是不是純數字(浮點數)(Floating point number)
-function isFloatNumber_dot(dataStr) {
+function x_isFloatNumber_dot(dataStr) {
   var reg = /^[0-9]+(\.[0-9]{1,10})?$/;   //允許小數點
   return reg.test(dataStr);
 }
