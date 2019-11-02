@@ -145,7 +145,7 @@ function submitHandle(e){
   // username (有填就好)
 
   // mobile
-  if (isMobile(my_mobile)){
+  if (x_isMobile(my_mobile)){
     my_mobile_message.html("");
   }else{
     my_mobile_message.html("手機無效，必須符合台灣規格");
