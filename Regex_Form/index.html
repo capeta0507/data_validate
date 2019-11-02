@@ -15,6 +15,10 @@
         color:red;
         border-color: red;
       }
+      #myID:valid{
+        color:green;
+        border-color: black;
+      }
       #mySend {
         font-size: 25px;
       }
@@ -34,9 +38,9 @@
   <body>
     <form>
       <h1>表單資料驗證</h1>
-      身分證字號：<input type="text" id="myID" autocomplete="off" pattern='^[A-Z][12]\d{8}$' title="(不符合台灣身分證字號規則)" required>
+      身分證字號：<input type="text" id="myID" autocomplete="off" maxlength="10" pattern='^[A-Z][12]\d{8}$' title="(不符合台灣身分證字號規則)" required>
 
-      手機：<input type="text" id="myPhone" autocomplete="off" pattern='^09\d{8}$' title="(不符合台灣Mobile規則)" required>
+      手機：<input type="tel" id="myPhone" autocomplete="off" maxlength="10" pattern='^09\d{8}$' title="(不符合台灣Mobile規則)" onkeyup="value=value.replace(/[^\d]/g,'') " required>
       <input type="submit" id="mySend" value="送出">
     </form>
   </body>
